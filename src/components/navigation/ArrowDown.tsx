@@ -34,6 +34,16 @@ const ArrowContainer = styled.div`
   width: 100%;
 `;
 
+const Svg = styled.svg`
+  stroke: var(--main-color);
+  transition: var(--transition);
+
+  &:hover {
+    stroke: var(--accent-color);
+  }
+`;
+
+
 function ArrowDown() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -62,7 +72,7 @@ function ArrowDown() {
     <ArrowDownD $visible={!isScrolled}>
       <ArrowContainer>
         <a href='projects' onClick={handleClick}>
-          <svg
+          <Svg
             fill='none'
             height='2rem'
             viewBox='0 0 24 24'
@@ -70,7 +80,6 @@ function ArrowDown() {
             xmlns='http://www.w3.org/2000/svg'
           >
             <g
-              stroke='#fff'
               strokeLinecap='round'
               strokeLinejoin='round'
               strokeWidth='2'
@@ -78,7 +87,7 @@ function ArrowDown() {
               <path d='m6 12.5 5.3243 4.8806c.3208.2941.4812.4411.6757.4411s.3549-.147.6757-.4411l5.3243-4.8806' />
               <path d='m6 6 5.3243 4.8806c.3208.2941.4812.4411.6757.4411s.3549-.147.6757-.4411l5.3243-4.8806' />
             </g>
-          </svg>
+          </Svg>
         </a>
       </ArrowContainer>
     </ArrowDownD>

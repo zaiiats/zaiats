@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { ThemeContext } from '../contexts/ThemeContext';
+import GlobalStyles from "../styles/GlobalStyles";
 
 export const ThemeProvider = ({children}:{children:ReactNode}) => {
 
@@ -36,7 +37,8 @@ export const ThemeProvider = ({children}:{children:ReactNode}) => {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <GlobalStyles theme={theme} />
+      {children}  
     </ThemeContext.Provider>
   );
 }

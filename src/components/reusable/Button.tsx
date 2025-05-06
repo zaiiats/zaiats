@@ -21,25 +21,16 @@ const StyledButton = styled.button<{ $variant: ButtonStyleType }>`
   ${({ $variant }) =>
     $variant === 'main'
       ? css`
-          background-color: #6969ff;
+          background-color: var(--accent-color);
           color: white;
-          box-shadow: 0 0 13px rgba(255, 255, 255, 0.4);
+          box-shadow: 0 0 13px var(--accent-color);
 
           &:hover {
-            background-color: #7474ff;
-            box-shadow: 0 0 17px rgba(255, 255, 255, 0.4);
+            background-color: var(--accent-color-high);
+            box-shadow: 0 0 17px var(--accent-color-high);
           }
         `
-      : css`
-          background-color: transparent;
-          color: #6969ff;
-          border: 2px solid #6969ff;
-
-          &:hover {
-            background-color: #bbbbff1a;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-          }
-        `}
+      : css``}
 `;
 
 function Button({ text, style = 'main', onClick }: ButtonProps) {

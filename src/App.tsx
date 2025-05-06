@@ -1,18 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import Project from './pages/Projects';
+import Project from './pages/Project';
 import { ThemeProvider } from './providers/ThemeProvider';
 import { LangProvider } from './providers/LangProvider';
 import styled from 'styled-components';
-import GlobalStyles from './styles/GlobalStyles';
 import Frame from './components/containers/Frame';
 import MainContent from './components/containers/MainContent';
 import ArrowDown from './components/navigation/ArrowDown';
 
 const StyledApp = styled.div`
   width: 100%;
-  background-color: black;
-  color: white;
   font-family: 'Montserrat';
 `;
 
@@ -21,7 +18,6 @@ function App() {
     <StyledApp>
       <ThemeProvider>
         <LangProvider>
-          <GlobalStyles />
           <Frame />
 
           <MainContent>

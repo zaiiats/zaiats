@@ -13,12 +13,11 @@ const fontSizeMap: Record<SecondaryTextType, string> = {
 const StyledP = styled.p<{ $size: SecondaryTextType }>`
   font-family: 'Montserrat', sans-serif;
   font-size: ${({ $size }) => fontSizeMap[$size]};
-  color: white;
 
   span {
-    font-weight:600;
-    font-size:1.1em;
-    color: #6969ff;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: var(--accent-color);
   }
 `;
 

@@ -15,6 +15,7 @@ const StyledNav = styled.nav`
   font-family: 'Eurostyle';
   font-size: 0.8rem;
   z-index: 100;
+  color: var(--main-color);
 `;
 
 const NavLink = styled.a`
@@ -24,16 +25,15 @@ const NavLink = styled.a`
   align-items: center;
   text-align: center;
   align-self: stretch;
-
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
-
   user-select: none;
 
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s linear;
+
+
   &:hover {
-    color: #ccc;
+    color: var(--grey-color);
   }
 
   &:active {
@@ -42,7 +42,7 @@ const NavLink = styled.a`
 
   @media (hover: none) {
     &:hover {
-      color: white;
+      color: var(--main-color);
       background-color: transparent;
     }
   }

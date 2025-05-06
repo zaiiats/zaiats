@@ -10,13 +10,13 @@ import { keyframes } from 'styled-components';
 
 const scaleAndRotate = keyframes`
   0% {
-    transform: scale(0.9) rotate(0deg);
+    transform: scale(0.7) rotate(70deg);
   }
   50% {
-    transform: scale(1) rotate(180deg);
+    transform: scale(0.7) rotate(70deg);
   }
   100% {
-    transform: scale(0.9) rotate(360deg);
+    transform: scale(0.7) rotate(70deg);
   }
 `;
 
@@ -40,7 +40,7 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width:70%;
+  max-width: 70%;
 `;
 
 const ImageContainer = styled.div`
@@ -56,13 +56,14 @@ const Img = styled.img`
 const ImgBackground = styled.img`
   position: absolute;
   object-fit: cover;
-  width: 350%;
+  width: 200%;
   animation: ${scaleAndRotate} 20s infinite linear;
   z-index: -1;
+  box-shadow: 0 0 500px var(--accent-color);
 `;
 
 const Div = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +78,7 @@ function Hero() {
       <ActionContainer>
         <TextContainer>
           <MainText size='huge'>
-            <span>{t('hello')}</span>
+            {t('hello')}
           </MainText>
           <SecondaryText size='small'>
             {t('i')} <span>{t('oleksandr')}</span> – {t('heroText')}
@@ -91,7 +92,7 @@ function Hero() {
       </ActionContainer>
       <ImageContainer>
         <Div>
-          <ImgBackground src='./images/ellipse.png' alt='avatar' />
+          <ImgBackground src='./images/ellipse1.png' alt='avatar' />
           <Img src='./images/avatar.png' alt='avatar' />
         </Div>
       </ImageContainer>

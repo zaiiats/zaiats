@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
   overflow-y: hidden;
   width: 100%;
   display: flex;
+  color: var(--main-color);
 `;
 
 const Img = styled.img`
@@ -19,7 +20,9 @@ const Img = styled.img`
   width: calc(100% - 2rem);
   height: calc(100% - 2rem);
   user-select: none;
+  background-color: var(--frame-color);
   -webkit-user-drag: none;
+  transition:var(--transition);
 `;
 
 const Div = styled.div`
@@ -27,7 +30,11 @@ const Div = styled.div`
   width: 100%;
   z-index: 2;
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: none;
+  border-radius: 50px;
+  background-color: var(--bg-color);
+  transition: var(--transition);
 
   &::-webkit-scrollbar {
     display: none;

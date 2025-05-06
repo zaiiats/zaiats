@@ -1,5 +1,7 @@
 import FullScreen from '../components/containers/Screen';
 import Hero from '../components/sectors/Hero';
+import About from '../components/sectors/About';
+import Projects from '../components/sectors/Projects';
 
 function Home() {
   return (
@@ -8,10 +10,10 @@ function Home() {
         <Hero />
       </FullScreen>
       <FullScreen id='projects'>
-        <>Hi</>
+        <Projects />
       </FullScreen>
       <FullScreen id='about'>
-        <>Hi</>
+        <About />
       </FullScreen>
     </div>
   );

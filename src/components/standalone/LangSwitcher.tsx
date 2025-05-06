@@ -12,17 +12,18 @@ const Wrapper = styled.div`
 
 const Toggle = styled.button`
   background: transparent;
-  color: white;
+  color: var(--main-color);
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   padding: 0.3rem 0.8rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: var(--transition);
 
   &:hover {
-    background: #0000ff;
+    background: var(--accent-color);
+    color: var(--reverse-color);
   }
 `;
 
@@ -30,25 +31,26 @@ const Dropdown = styled.ul`
   margin: 0;
   padding: 0.3rem 0;
   list-style: none;
-  background: #222;
+  background: var(--reverse-color);
   border-radius: 5px;
   position: absolute;
   bottom: 120%;
   right: 0;
   min-width: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px var(--grey-color);
+  transition:var(--transition);
 `;
 
 const Option = styled.li`
-  color: white;
+  color: var(--main-color);
   padding: 0.3rem 0.8rem;
   font-size: 0.95rem;
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: var(--transition);
 
   &:hover {
-    background: #444;
+    background-color: var(--grey-color-light);
   }
 `;
 

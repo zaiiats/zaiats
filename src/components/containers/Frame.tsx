@@ -1,11 +1,14 @@
 import styled, { css } from 'styled-components';
+import { useThemeContext } from '../../hooks/useThemeContext';
 
 const Border = styled.div<{
   $position: 'top' | 'bottom' | 'left' | 'right';
+  $theme: 'light' | 'dark';
 }>`
   position: absolute;
-  background-color: black;
+  background-color: var(--frame-color);
   z-index: 10000;
+  transition: all 0.15s ease-in-out;
 
   ${({ $position }) => {
     switch ($position) {
@@ -44,12 +47,15 @@ const StyledFrame = styled.div`
 `;
 
 const Frame = () => {
+
+  const {theme } = useThemeContext()
+
   return (
     <StyledFrame>
-      <Border $position='top' />
-      <Border $position='bottom' />
-      <Border $position='left' />
-      <Border $position='right' />
+      <Border $position='top' $theme={theme} />
+      <Border $position='bottom' $theme={theme} />
+      <Border $position='left' $theme={theme} />
+      <Border $position='right' $theme={theme} />
     </StyledFrame>
   );
 };

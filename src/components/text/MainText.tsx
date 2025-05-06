@@ -15,7 +15,7 @@ const StyledP = styled.p<{ $size: MainTextType }>`
   font-size: ${({ $size }) => fontSizeMap[$size]};
 
   span {
-    color: #6969ff;
+    color: var(--accent-color);
   }
 `;
 

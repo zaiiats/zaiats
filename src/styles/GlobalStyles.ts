@@ -1,25 +1,30 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
-  /* Montserrat variable */
-  @font-face {
-    font-family: 'Montserrat';
-    src:
-      url('/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
+const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
+  :root {
+    --main-color: ${({ theme }) => (theme === 'light' ? 'black' : 'white')};
+    --reverse-color: ${({ theme }) => (theme === 'light' ? 'white' : 'black')};
+    --bg-color: ${({ theme }) => (theme === 'light' ? 'white' : '#111')};
+
+    --grey-color: ${({ theme }) => (theme === 'light' ? '#444' : '#aaa')};
+    --grey-color-light: ${({ theme }) => (theme === 'light' ? '#ccc' : '#444')};
+
+    --frame-color: ${({ theme }) => (theme === 'light' ? '#aaa' : 'black')};
+
+    --accent-color: ${({ theme }) => (theme === 'light' ? 'red' : 'red')};
+    --accent-color-high:#ff2222;
+    --text-color: ${({ theme }) => (theme === 'light' ? '#000000' : '#f0f0f0')};
+
+    --transition : all 0.15s ease-in-out;
   }
 
-  /* Eurostyle regular */
-  @font-face {
-    font-family: 'Eurostyle';
-    src:
-      url('/fonts/Eurostyle.ttf')    format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
   }
-
 `;
+
 export default GlobalStyles;
