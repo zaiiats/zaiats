@@ -1,9 +1,9 @@
+import { useParams } from 'react-router-dom';
+
 function Project() {
-  return (
-    <div>
-      
-    </div>
-  )
+  const { projectName } = useParams();
+
+  return <div>{projectName}</div>;
 }
 
-export default Project
+export default Project;
