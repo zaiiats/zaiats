@@ -23,7 +23,6 @@ const Toggle = styled.button`
 
   &:hover {
     background: var(--accent-color);
-    color: var(--reverse-color);
   }
 `;
 

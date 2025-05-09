@@ -4,7 +4,9 @@ const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
   :root {
     --main-color: ${({ theme }) => (theme === 'light' ? 'black' : 'white')};
     --reverse-color: ${({ theme }) => (theme === 'light' ? 'white' : 'black')};
-    --bg-color: ${({ theme }) => (theme === 'light' ? 'white' : '#111')};
+    --bg-color: ${({ theme }) => (theme === 'light' ? '#ddd' : '#111')};
+    --bg2-color: ${({ theme }) =>
+      theme === 'light' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.8)'};
 
     --grey-color: ${({ theme }) => (theme === 'light' ? '#444' : '#aaa')};
     --grey-color-light: ${({ theme }) => (theme === 'light' ? '#ccc' : '#444')};

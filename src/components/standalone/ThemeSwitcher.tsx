@@ -12,15 +12,17 @@ const StyledDiv = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 5px;
+  transition:var(--transition);
+
+  &:hover {
+    background-color: var(--accent-color);
+  }
 `;
 
 const Svg = styled.svg`
   stroke: var(--main-color);
   transition: var(--transition);
-
-  &:hover {
-    stroke: var(--accent-color);
-  }
 `;
 
 function ThemeSwitcher() {
