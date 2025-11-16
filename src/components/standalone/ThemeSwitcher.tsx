@@ -6,7 +6,7 @@ const StyledDiv = styled.div`
   height: 2rem;
   width: 2rem;
   bottom: 2rem;
-  left: 3rem;
+  left: 2rem;
   z-index: 193;
   display: flex;
   align-items: center;

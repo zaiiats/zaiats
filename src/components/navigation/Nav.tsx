@@ -1,21 +1,30 @@
-import { type MouseEvent } from 'react';
-import styled from 'styled-components';
-import Logo from './Logo';
-import { useScrollOrNavigate } from '../../hooks/useScrollOrNavigate';
-import { useTranslation } from 'react-i18next';
+import { useEffect, useState, type MouseEvent } from "react";
+import styled from "styled-components";
+import Logo from "./Logo";
+import { useScrollOrNavigate } from "../../hooks/useScrollOrNavigate";
+import { useTranslation } from "react-i18next";
 
-const StyledNav = styled.nav`
+const StyledNav = styled.nav<{ $scrolled: boolean }>`
+  padding: 0 1rem;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  width: 97%;
+  width: 100%;
   height: 3rem;
   display: flex;
   align-items: center;
-  font-family: 'Eurostyle';
+  font-family: "Eurostyle";
   font-size: 0.8rem;
   z-index: 100;
   color: var(--main-color);
+  transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+
+  ${({ $scrolled }) =>
+    $scrolled &&
+    `
+      backdrop-filter: blur(10px);
+      background-color: rgba(0,0,0,0.3);
+    `}
 `;
 
 const NavLink = styled.a`
@@ -31,13 +40,8 @@ const NavLink = styled.a`
   cursor: pointer;
   transition: all 0.15s linear;
 
-
   &:hover {
     color: var(--grey-color);
-  }
-
-  &:active {
-    transform: scale(0.98);
   }
 
   @media (hover: none) {
@@ -49,24 +53,41 @@ const NavLink = styled.a`
 `;
 
 function Nav() {
-  const {scrollOrNavigate} = useScrollOrNavigate()
-  const {t} = useTranslation();
+  const { scrollOrNavigate } = useScrollOrNavigate();
+  const { t } = useTranslation();
+
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const container = document.getElementById("mainContainer");
+    if (!container) return;
+
+    const onScroll = () => {
+      setScrolled(container.scrollTop > 0);
+    };
+
+    // одразу провіряємо стан при маунті
+    onScroll();
+
+    container.addEventListener("scroll", onScroll);
+    return () => container.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    scrollOrNavigate('/', id);
+    scrollOrNavigate("/", id);
   };
 
   return (
-    <StyledNav>
-      <NavLink href='#projects' onClick={(e) => handleClick(e, 'projects')}>
-        {t('projects')}
+    <StyledNav $scrolled={scrolled}>
+      <NavLink href="#projects" onClick={(e) => handleClick(e, "projects")}>
+        {t("projects")}
       </NavLink>
 
       <Logo />
 
-      <NavLink href='#about' onClick={(e) => handleClick(e, 'about')}>
-        {t('about')}
+      <NavLink href="#about" onClick={(e) => handleClick(e, "about")}>
+        {t("about")}
       </NavLink>
     </StyledNav>
   );

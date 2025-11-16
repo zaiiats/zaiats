@@ -3,7 +3,6 @@ import { useThemeContext } from '../../hooks/useThemeContext';
 import type { ReactNode } from 'react';
 
 const StyledDiv = styled.div<{ $theme: string }>`
-  height: calc(100dvh - 5rem);
   min-height:30rem;
 `;
 

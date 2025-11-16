@@ -13,8 +13,8 @@ const GlobalStyles = createGlobalStyle<{ theme: 'light' | 'dark' }>`
 
     --frame-color: ${({ theme }) => (theme === 'light' ? '#aaa' : 'black')};
 
-    --accent-color: ${({ theme }) => (theme === 'light' ? 'red' : 'red')};
-    --accent-color-high:#ff2222;
+    --accent-color: ${({ theme }) => (theme === 'light' ? '#58289f' : '#58289f')};
+    --accent-color-high:#391a68;
     --text-color: ${({ theme }) => (theme === 'light' ? '#000000' : '#f0f0f0')};
 
     --transition : all 0.15s ease-in-out;

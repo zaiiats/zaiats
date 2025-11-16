@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { useScrollOrNavigate } from '../../hooks/useScrollOrNavigate';
-import type { MouseEvent } from 'react';
+import styled from "styled-components";
+import { useScrollOrNavigate } from "../../hooks/useScrollOrNavigate";
+import type { MouseEvent } from "react";
 
 const StyledDiv = styled.div`
   display: grid;
@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const InfoHeader = styled.header`
-  font-family: 'Eurostyle';
+  font-family: "Eurostyle";
   padding-left: 2rem;
   color: var(--accent-color);
 `;
@@ -104,7 +104,6 @@ const ProjectName = styled.span`
   }
 `;
 
-
 function InfoContainer({
   skills,
   projects,
@@ -114,12 +113,12 @@ function InfoContainer({
   projects: Project[];
   type: string;
 }) {
-  const {scrollOrNavigate} = useScrollOrNavigate()
+  const { scrollOrNavigate } = useScrollOrNavigate();
 
-  const handleClick = (e:MouseEvent, url:string) => {
+  const handleClick = (e: MouseEvent, url: string) => {
     e.preventDefault();
     scrollOrNavigate(`/${url}`, url);
-  }
+  };
 
   return (
     <StyledDiv>
@@ -143,8 +142,8 @@ function InfoContainer({
               key={pr.name}
               onClick={(e) => handleClick(e, pr.url)}
               href={`/${pr.url}`}
-              target='_blank'
-              rel='noopener noreferrer'
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <ProjectImg src={`/images/${pr.url}.png`} alt={pr.name} />
               <ProjectName>{pr.name}</ProjectName>

@@ -5,7 +5,7 @@ import { useLangContext } from '../../hooks/useLangContext';
 const Wrapper = styled.div`
   position: fixed;
   bottom: 2rem;
-  right: 3rem;
+  right: 2rem;
   z-index: 193;
   user-select: none;
 `;

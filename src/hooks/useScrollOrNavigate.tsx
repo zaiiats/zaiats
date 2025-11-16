@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { smoothScrollTo } from '../scripts/navigation';
+import { useLocation, useNavigate } from "react-router-dom";
+import { smoothScrollTo } from "../scripts/navigation";
 
 export const useScrollOrNavigate = () => {
   const location = useLocation();
@@ -7,12 +7,12 @@ export const useScrollOrNavigate = () => {
 
   const scrollOrNavigate = (targetPath: string, elementId: string) => {
     if (location.pathname === targetPath) {
-      // вже на цьому шляху → просто скрол
+      console.log(targetPath, elementId);
+
       setTimeout(() => {
-        smoothScrollTo(elementId);
+        smoothScrollTo(elementId, elementId === "home");
       }, 0);
     } else {
-      // перейти на інший шлях і скролнути після переходу
       navigate(targetPath, { state: { scrollTo: elementId } });
     }
   };

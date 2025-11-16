@@ -1,10 +1,10 @@
-import { useEffect, type ReactNode } from 'react';
-import styled from 'styled-components';
-import Nav from '../navigation/Nav';
-import { useLocation } from 'react-router-dom';
-import { smoothScrollTo } from '../../scripts/navigation';
-import ThemeSwitcher from '../standalone/ThemeSwitcher';
-import LangSwitcher from '../standalone/LangSwitcher';
+import { useEffect, useRef, type ReactNode } from "react";
+import styled from "styled-components";
+import Nav from "../navigation/Nav";
+import { useLocation, useNavigate } from "react-router-dom";
+import { smoothScrollTo } from "../../scripts/navigation";
+import ThemeSwitcher from "../standalone/ThemeSwitcher";
+import LangSwitcher from "../standalone/LangSwitcher";
 
 const StyledDiv = styled.div`
   padding: 1rem;
@@ -15,24 +15,13 @@ const StyledDiv = styled.div`
   color: var(--main-color);
 `;
 
-const Img = styled.img`
-  position: absolute;
-  width: calc(100% - 2rem);
-  height: calc(100% - 2rem);
-  user-select: none;
-  background-color: var(--frame-color);
-  -webkit-user-drag: none;
-  transition:var(--transition);
-`;
-
 const Div = styled.div`
-  padding: 3rem 2.5vw 0 2.5vw;
+  padding: 0rem 0vw 0 0vw;
   width: 100%;
   z-index: 2;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
-  border-radius: 50px;
   background-color: var(--bg-color);
   transition: var(--transition);
 
@@ -43,21 +32,25 @@ const Div = styled.div`
 
 function MainContent({ children }: { children: ReactNode }) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const hasHandledScroll = useRef(false);
 
   useEffect(() => {
     const scrollTo = location.state?.scrollTo;
-    if (scrollTo) {
+    if (scrollTo && !hasHandledScroll.current) {
+      hasHandledScroll.current = true;
+
       setTimeout(() => {
-        smoothScrollTo(scrollTo);
+        smoothScrollTo(scrollTo, scrollTo === "main");
+        navigate(location.pathname, { replace: true, state: {} });
       }, 100);
     }
-  }, [location]);
+  }, [location, navigate]);
 
   return (
     <StyledDiv>
-      <Img src='/images/frame.png' />
       <Nav />
-      <Div id='mainContainer'>{children}</Div>
+      <Div id="mainContainer">{children}</Div>
       <ThemeSwitcher />
       <LangSwitcher />
     </StyledDiv>
