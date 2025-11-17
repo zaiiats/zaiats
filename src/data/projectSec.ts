@@ -50,7 +50,7 @@ export const PROJECT_SECTIONS = [
         thumbnailImage: "images/projects/trusty.png",
         label: "Trusty",
         description: "Онлайн платформа для страхової компанії",
-        url: "/projects/btw",
+        url: "/projects/trusty",
       },
     ],
   },

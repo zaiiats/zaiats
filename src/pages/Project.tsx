@@ -121,16 +121,21 @@ const Link = styled.a`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
   font-size: 1.1rem;
   line-height: 120%;
   text-indent: 2rem;
+
+  h3 {
+    font-size: 2rem;
+    line-height: 120%;
+  }
 `;
 
 const Skills = styled.div`
   display: flex;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 0;
   flex-wrap: wrap;
 `;
 
