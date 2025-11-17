@@ -79,13 +79,13 @@ function Nav() {
   return (
     <StyledNav $scrolled={scrolled}>
       <NavLink href="#projects" onClick={(e) => handleClick(e, "projects")}>
-        {t("projects")}
+        {t("nav.projects")}
       </NavLink>
 
       <Logo />
 
       <NavLink href="#about" onClick={(e) => handleClick(e, "about")}>
-        {t("about")}
+        {t("nav.about")}
       </NavLink>
     </StyledNav>
   );

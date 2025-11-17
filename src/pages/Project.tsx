@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { projects } from "../data/projects";
 import { useScrollOrNavigate } from "../hooks/useScrollOrNavigate";
+import { useTranslation } from "react-i18next";
 
 export interface Project {
   name: string;
@@ -22,7 +23,7 @@ export interface Project {
 type ProjectKey = keyof typeof projects;
 
 const StyledSection = styled.section`
-  padding: 3rem 0rem 3rem;
+  padding: 3rem 0rem 4rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -34,24 +35,35 @@ const ProjectThumbnail = styled.div<{ $thumbnailSrc: string }>`
   background-image: url(${({ $thumbnailSrc }) => $thumbnailSrc});
   background-size: cover;
   background-position: center;
-  opacity: 0.6;
+  opacity: 0.5;
+`;
+
+const ProjectInfo = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem 1rem;
 `;
 
 const ProjectName = styled.div`
+  width: 100%;
+  gap: min(1vw, 1rem);
+  position: absolute;
+  font-size: min(6vw, 4rem);
+  transform: translate(0rem, calc(-50% - 1rem));
   display: flex;
   align-items: center;
-  gap: 2rem;
   font-family: "Eurostyle";
-  position: absolute;
-  top: 23rem;
-  font-size: 4rem;
-  transform: translate(4rem, -50%);
 `;
 
 const BackSvg = styled.span`
   display: flex;
   cursor: pointer;
   align-items: center;
+  padding: 1rem;
+
   svg {
     height: 2rem;
     width: 2rem;
@@ -60,33 +72,28 @@ const BackSvg = styled.span`
       fill: white;
     }
   }
-`;
 
-const ProjectInfo = styled.div`
-  display: flex;
-  padding: 4rem 2rem;
-  flex-direction: column;
-  max-width: 80rem;
-  margin: 0 auto;
-`;
-
-const UrlContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+  @media screen and (max-width: 850px) {
+    padding: 0.5rem;
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
 `;
 
 const Warning = styled.div`
-  display: flex;
-  border: 2px solid #979726;
-  border-radius: 15px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  border: 1px solid #979726;
+  border-radius: 10px;
   max-width: 40rem;
   align-self: center;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 1rem;
   color: #979726;
+  margin: 4rem 0 0;
 
   svg {
     height: 2rem;
@@ -95,14 +102,20 @@ const Warning = styled.div`
       fill: #979726;
     }
   }
+
+  @media screen and (max-width: 850px) {
+    font-size: 0.85rem;
+
+    margin: 2rem 0 0;
+  }
 `;
 
 const Link = styled.a`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   width: max-content;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   transition: all 0.15s ease-in-out;
 
   p {
@@ -118,33 +131,72 @@ const Link = styled.a`
       fill: #9999fb;
     }
   }
+
+  @media screen and (max-width: 850px) {
+    font-size: 1rem;
+  }
 `;
 
 const Description = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  font-size: 1.1rem;
-  line-height: 150%;
-  text-indent: 2rem;
-
-  margin: 4rem auto;
+  text-indent: 1.5rem;
+  margin-top: 0.5rem;
 
   h3 {
-    font-size: 2rem;
+    font-weight: 600;
+    font-size: 1.4rem;
     line-height: 120%;
+    margin-bottom: 0.25rem;
+
+    @media screen and (max-width: 850px) {
+      font-size: 1rem;
+      line-height: 120%;
+      margin-bottom: 0.15rem;
+    }
+  }
+
+  p {
+    line-height: 150%;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+
+    @media screen and (max-width: 850px) {
+      line-height: 150%;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    text-indent: 1rem;
+  }
+`;
+
+const Label = styled.p`
+  margin: 3rem 1rem 1rem;
+  font-family: "Eurostyle";
+  font-size: 2rem;
+
+  @media screen and (max-width: 850px) {
+    font-size: 1.5rem;
+
+    margin: 2rem 0.75rem 0.75rem;
   }
 `;
 
 const Skills = styled.div`
   display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
+  gap: 0.5rem;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 850px) {
+    gap: 0.25rem;
+  }
 `;
 
 const Item = styled.div`
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   border: 1px solid #ffffff33;
   background-color: #000000;
@@ -155,6 +207,11 @@ const Item = styled.div`
   justify-content: center;
   font-size: 1rem;
   border-radius: 10px;
+
+  @media screen and (max-width: 850px) {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.75rem;
+  }
 `;
 
 const PhotosGallery = styled.div`
@@ -163,7 +220,10 @@ const PhotosGallery = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin: 2rem auto 0;
+
+  @media screen and (max-width: 850px) {
+    gap: 1rem;
+  }
 `;
 
 const Image = styled.img`
@@ -191,19 +251,28 @@ const LightboxOverlay = styled.div`
 
 const LightboxContent = styled.div`
   position: relative;
-  width: 90vw;
-  height: 65vh;
+  width: calc(100vw - 12rem);
+  height: 60vh;
+  
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 850px) {
+    width: calc(100vw - 8rem);
+  }
 `;
 
 const LightboxImage = styled.img`
   max-width: 100%;
-  max-height: 100%;
+  max-height: 60vh;
   border-radius: 1rem;
   border: 1px solid #ffffff33;
   object-fit: contain;
+
+  @media screen and (max-width: 850px) {
+    border-radius: 0.5rem;
+  }
 `;
 
 const ArrowButton = styled.button`
@@ -232,15 +301,28 @@ const ArrowButton = styled.button`
       fill: white;
     }
   }
+
+  @media screen and (max-width: 850px) {
+    width: 2rem;
+    height: 2rem;
+  }
 `;
 
 const ArrowLeft = styled(ArrowButton)`
   left: -4rem;
+
+  @media screen and (max-width: 850px) {
+    left: -3rem;
+  }
 `;
 
 const ArrowRight = styled(ArrowButton)`
   right: -4rem;
   transform: translateY(-50%) rotate(180deg);
+
+  @media screen and (max-width: 850px) {
+    right: -3rem;
+  }
 `;
 
 const CloseButton = styled.button`
@@ -250,11 +332,11 @@ const CloseButton = styled.button`
   border: none;
   background: rgba(15, 23, 42, 0.8);
   color: white;
-  width: 4.5rem;
-  height: 4.5rem;
   border-radius: 999px;
   cursor: pointer;
   font-size: 1.5rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,11 +344,18 @@ const CloseButton = styled.button`
   &:hover {
     background: rgba(220, 38, 38, 0.9);
   }
+
+  @media screen and (max-width: 850px) {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+  }
 `;
 
 function Project() {
   const { projectName } = useParams();
   const { scrollOrNavigate } = useScrollOrNavigate();
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const project = (
@@ -337,40 +426,60 @@ function Project() {
           <BackSvg onClick={() => scrollOrNavigate("/", "projects")}>
             {arrowSvg}
           </BackSvg>
-          {project.name}
+          {t(`project.${projectName}.label`)}
         </ProjectName>
-        <UrlContainer>
-          {project.url && (
+
+        {t(`project.${projectName}.warningText`) && (
+          <Warning>
+            {warningSvg}
+            {t(`project.${projectName}.warningText`)}
+          </Warning>
+        )}
+
+        {project.skills && (
+          <>
+            <Label>{t("project.labels.skills")}</Label>
+            <Skills>
+              {project.skills.map((s: string, i: number) => (
+                <Item key={`skill-${i}`}>{s}</Item>
+              ))}
+            </Skills>
+            <Skills style={{ marginTop: "1.75rem" }}>
+              <Item>
+                {project.isSolo ? t("project.own") : t("project.team")}
+              </Item>
+              <Item>
+                {project.isDesigned
+                  ? t("project.ownDesign")
+                  : t("project.someonesDesign")}
+              </Item>
+              <Item>
+                {project.year} {t("project.year")}
+              </Item>
+              <Item>
+                {t("project.duration")} {project.durationMonths}{" "}
+                {t("project.months")}
+              </Item>
+            </Skills>
+          </>
+        )}
+
+        {project.url && (
+          <>
+            <Label>{t("project.labels.link")}</Label>
             <Link target="_blank" href={project.url}>
               <p>{project.url}</p>
               {linkSvg}
             </Link>
-          )}
-          {project.warningText && (
-            <Warning>
-              {warningSvg}
-              {project.warningText}
-            </Warning>
-          )}
-        </UrlContainer>
-        {project.skills && (
-          <Skills>
-            {project.skills.map((s: string, i: number) => (
-              <Item key={`skill-${i}`}>{s}</Item>
-            ))}
-            <Item>
-              {project.isSolo ? "Власний проект" : "Командний проект"}
-            </Item>
-            <Item>
-              {project.isDesigned ? "Власний дизайн" : "Дизайн з макету"}
-            </Item>
-            <Item>{project.year} рік</Item>
-            <Item>Тривалість {project.durationMonths} міс.</Item>
-          </Skills>
+          </>
         )}
+        <Label>{t("project.labels.description")}</Label>
         <Description
-          dangerouslySetInnerHTML={{ __html: project.description }}
+          dangerouslySetInnerHTML={{
+            __html: t(`project.${projectName}.description`),
+          }}
         />
+        <Label>{t("project.labels.gallery")}</Label>
         <PhotosGallery>
           {project.images.map((image: string, i: number) => (
             <Image

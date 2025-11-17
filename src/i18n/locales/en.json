@@ -1,10 +1,125 @@
 {
-  "greet": "Hello",
-  "projects":"Projects",
-  "about": "About me",
-  "hello":"Hello",
-  "i":"I am",
-  "oleksandr":"Oleksandr",
-  "heroText":"a web developer who transforms ideas into digital solutions. My goal is to blend technology and creativity to turn your ideas into reality.",
-  "writeMe":"Contact me"
+  "nav": {
+    "projects": "Projects",
+    "about": "About me"
+  },
+  "hero": {
+    "greet": "Hello",
+    "i": "I am",
+    "oleksandr": "Oleksandr",
+    "heroText": "a web developer who transforms ideas into digital solutions. My goal is to blend technology and creativity to turn your ideas into reality.",
+    "writeMe": "Contact me"
+  },
+  "projects": {
+    "fullstack": "Fullstack",
+    "frontend": "Frontend",
+    "courses": "Courses",
+    "hours": "hours",
+
+    "profix": {
+      "label": "Profix",
+      "description": "A platform for a company selling construction components"
+    },
+
+    "muka": {
+      "label": "Muka",
+      "description": "An online adaptation of an old traditional board game from Mukachevo"
+    },
+
+    "nulp": {
+      "label": "NULP schedule",
+      "description": "A convenient tool for browsing group schedules"
+    },
+
+    "per6": {
+      "label": "Per6",
+      "description": "The main website of the development team"
+    },
+
+    "flora": {
+      "label": "Flora & Fauna",
+      "description": "An introductory website about the flora and fauna of Zakarpattia"
+    },
+
+    "btw": {
+      "label": "Behind The Walls",
+      "description": "A post-apocalyptic online multiplayer game"
+    },
+
+    "trusty": {
+      "label": "Trusty",
+      "description": "An online platform for an insurance company"
+    }
+  },
+  "about": {
+    "stats": {
+      "courses": "Courses",
+      "projects": "Projects",
+      "years": "Years of development",
+      "instagram": "Instagram",
+      "telegram": "Telegram",
+      "email": "Email"
+    },
+    "text": {
+      "paragraph1": "I am Oleksandr, a 19-year-old frontend developer and a 3rd-year Cybersecurity student at Lviv Polytechnic. I enjoy building clean, fast, and intuitive interfaces with attention to detail, animations, and overall user experience.",
+      "paragraph2": "I have experience working in team projects, combining technical skills with process organization: planning tasks, managing deadlines, and maintaining communication. I love when code not only 'works' but is readable, well-structured, and ready for scaling."
+    }
+  },
+  "project": {
+    "own": "Own project",
+    "team": "Team project",
+    "ownDesign": "Own design",
+    "someonesDesign": "Design from a template",
+    "year": "year",
+    "duration": "Duration",
+    "months": "months",
+    "labels": {
+      "skills": "Skills",
+      "link": "Link",
+      "description": "Description",
+      "gallery": "Gallery"
+    },
+
+    "profix": {
+      "label": "Profix",
+      "warningText": "",
+      "description": "<p> Profix is a fictional company specializing in the production and sale of fastening tools. The website includes a product catalog and an account system. The project is built entirely on the frontend — without direct backend integration — so the website functions as an interface demonstration. Two visual themes are available.</p> <p>For some time, products were loaded through a temporary API deployed on Vercel, but this integration was later disabled.</p>"
+    },
+
+    "muka": {
+      "label": "Muka",
+      "warningText": "",
+      "description": "<p> Muka is an online adaptation of an old board game from Mukachevo. The project includes game mode selection, a dynamic interface, and complex internal logic that accurately recreates the original gameplay.</p>"
+    },
+
+    "nulp": {
+      "label": "NULP Schedule",
+      "warningText": "The schedule works only during the academic period!",
+      "description": "<p> NULP Schedule is a convenient tool for viewing a university group’s timetable. The app automatically determines the week type, stores the selected group in LocalStorage for quick access, and allows adding personal notes to each class — making the timetable as informative and comfortable as possible.</p>"
+    },
+
+    "per6": {
+      "label": "Per6",
+      "warningText": "",
+      "description": "<p> Per6 is a personal project-company that for some time developed the game Behind The Walls. Currently, the main website contains little information, but over time it will feature game updates, news, new projects, and other useful content.</p>"
+    },
+
+    "nature": {
+      "label": "Flora & Fauna",
+      "warningText": "",
+      "description": "<p> Flora & Fauna is an introductory educational project created using basic markup and simple styling. It serves as an example of a starter approach to layout structure and styling fundamentals.</p>"
+    },
+
+    "btw": {
+      "label": "Behind The Walls",
+      "warningText": "The project is temporarily unavailable due to the server being turned off, but you can view the functionality and details in the screenshots",
+      "description": "<h3>Behind the Walls – short project overview</h3><p> Behind the Walls is a multiplayer post-apocalyptic Pixel Art game created by the Per6 team. It is based on a board game and fully adapted into an online format, accessible to players anywhere in the world.</p><p> The game was developed by a team of programmers and designers:<br> – 3 developers: myself (team lead & full-stack developer), Ivan and Maryana<br> – 2 designers: Solomiya and Vitalii</p><p> We built a complete gameplay cycle: the main menu, lobby, pre-game setup, character generation, and 7 voting rounds that determine which players make it into the bunker.</p><h3>Gameplay</h3><p> Players witness a global catastrophe and receive unique characteristics that can either increase or decrease their chances of survival. Throughout the 7 rounds, users discuss their strengths, evaluate others and vote. Those who manage to prove their usefulness to the group — and remain in the game — become the winners.</p>"
+    },
+
+    "trusty": {
+      "label": "Trusty",
+      "warningText": "The project is temporarily unavailable due to the server being turned off, but you can view the functionality and details in the screenshots",
+      "description": "<h3>Role and access system</h3><p>The project implements a flexible access system with four levels: Guest, Client, Employee and Admin. Each user only sees the pages and features that correspond to their role. All routes are fully protected: guests are automatically redirected to the login page, and all authenticated users are taken to their own dashboard. This ensures security and a correct distribution of permissions within the system.</p><h3>Routing and session handling</h3><p>Routes are stored in the URL, while tokens and user data are kept in browser storage. Thanks to this, a user can refresh the page or return to work without logging in again. All transitions are validated before rendering, so access to unauthorized pages is impossible.</p><h3>Caching and data fetching</h3><p>The system uses React Query for data management. Thanks to this, tables, contract lists, profiles and other data are automatically updated right after changes. Cache invalidation, stale time, refetch on focus and automatic retries on errors are implemented. This makes the interface highly responsive and stable.</p><h3>Authentication and account creation</h3><p>During registration or when an admin creates an account, the system checks the uniqueness of the phone number, email, login and passport number. After the account is created, the user receives an email with their login credentials. Tokens are bound to cache keys to prevent old data from being shown, even if another employee previously worked in the same session.</p><h3>Products and price calculator</h3><p>Guests can browse the product catalog and use search without creating an account. For client convenience, a price calculator is implemented that automatically calculates the cost of a potential contract based on the selected product and parameters.</p><h3>Dashboards and statistics</h3><p>Clients and guests see a main page with summary statistics. Employees and admins have access to an extended dashboard where detailed information about contracts, clients, teams and requests is displayed.</p><h3>Contracts and team workflow</h3><p>Clients can create contracts, enter their data and confirm them with payment. Teams work with contracts in several stages: a team lead picks a contract, its status changes to pending, and then the client can submit payout requests. Employees process these requests and approve payouts that do not exceed the initial contract limit. After the collaboration, the client can rate the team, which forms their overall rating.</p><h3>Team management</h3><p>The system includes teams with team leads and members. A single employee cannot be part of multiple teams at once and cannot be a team lead twice. The admin manages teams, creates new ones and deletes empty teams.</p><h3>User profile</h3><p>Each client can update their profile, add or remove an avatar (files are stored in Supabase buckets), change their password or other personal data via dedicated modal windows.</p><h3>Automation and background jobs</h3><p>The system has fully automated background processes. A database backup is created weekly, and the last ten copies are stored on the server. A daily cron job checks contract statuses and whether teams meet response deadlines. New contracts automatically appear for employees and admins with a modal notification.</p><h3>Infrastructure</h3><p>The frontend is hosted on Netlify over HTTPS, the backend runs on Contabo, and the Supabase database ensures stability, security, file storage and PostgreSQL-based data handling. All parts of the system work together reliably and securely.</p>"
+    }
+  }
 }

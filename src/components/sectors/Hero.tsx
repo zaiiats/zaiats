@@ -143,15 +143,15 @@ function Hero() {
     <StyledSection>
       <ActionContainer>
         <TextContainer>
-          <MainText size="huge">{t("hello")}</MainText>
+          <MainText size="huge">{t("hero.greet")}</MainText>
           <SecondaryText size="medium">
-            {t("i")} {t("oleksandr")} – {t("heroText")}
+            {t("hero.i")} {t("hero.oleksandr")} – {t("hero.heroText")}
           </SecondaryText>
         </TextContainer>
         <ButtonContainer>
           <Button
             onClick={() => scrollOrNavigate("/", "about")}
-            text={t("writeMe")}
+            text={t("hero.writeMe")}
             style="main"
           />
         </ButtonContainer>

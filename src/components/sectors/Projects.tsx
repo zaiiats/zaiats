@@ -3,12 +3,17 @@ import styled from "styled-components";
 import { COURSES } from "../../data/courses";
 import { PROJECT_SECTIONS } from "../../data/projectSec";
 import { useScrollOrNavigate } from "../../hooks/useScrollOrNavigate";
+import { useTranslation } from "react-i18next";
 
 const StyledWrapper = styled.div`
   padding: 5rem 2rem 3rem;
   width: 100%;
   display: flex;
   justify-content: center;
+
+  @media screen and (max-width: 550px) {
+    padding: 5rem 1rem 3rem;
+  }
 `;
 
 const Inner = styled.div`
@@ -41,8 +46,6 @@ const ScrollArea = styled.div`
 const ArrowButton = styled.button`
   position: absolute;
   top: 0.5rem;
-  width: 2.4rem;
-  height: 2.4rem;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.6);
   display: flex;
@@ -55,14 +58,31 @@ const ArrowButton = styled.button`
   opacity: 0;
   pointer-events: none;
   z-index: 2;
+  padding: 0.5rem;
 
   ${ScrollArea}:hover & {
     opacity: 1;
     pointer-events: auto;
   }
 
-  svg path {
-    fill: #000;
+  svg {
+    width: 1rem;
+    height: 1rem;
+
+    path {
+      fill: #000;
+    }
+  }
+
+  @media (max-width: 900px) {
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0.55rem;
+
+    svg {
+      width: 0.75rem;
+      height: 0.75rem;
+    }
   }
 
   &:hover {
@@ -111,6 +131,10 @@ const ProjectsContainer = styled.div`
     background: rgba(255, 255, 255, 0.2);
     border-radius: 999px;
   }
+
+  @media screen and (max-width: 550px) {
+    gap: 0.5rem;
+  }
 `;
 
 const ProjectCard = styled.div`
@@ -126,6 +150,21 @@ const ProjectCard = styled.div`
   &:hover div[data-overlay="true"] {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    div[data-overlay="true"] {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    height: 10rem;
+  }
+
+  @media screen and (max-width: 550px) {
+    height: 7rem;
   }
 `;
 
@@ -160,11 +199,19 @@ const Description = styled.div`
 const ProjectName = styled.h2`
   font-size: 1.8rem;
   font-weight: 600;
+
+  @media (max-width: 550px) {
+    font-size: 1rem;
+  }
 `;
 
 const ProjectText = styled.p`
   font-size: 0.85rem;
   opacity: 0.9;
+
+  @media (max-width: 550px) {
+    font-size: 0.6rem;
+  }
 `;
 
 const CoursesGrid = styled.div`
@@ -172,6 +219,11 @@ const CoursesGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   padding: 0 0rem 0 0rem;
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap:0.75rem;
+  }
 `;
 
 const CourseCard = styled.a`
@@ -217,6 +269,7 @@ const CourseMeta = styled.p`
 
 export default function Projects() {
   const { scrollOrNavigate } = useScrollOrNavigate();
+  const { t } = useTranslation();
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [canScroll, setCanScroll] = useState<boolean[]>([]);
 
@@ -250,8 +303,8 @@ export default function Projects() {
     <StyledWrapper>
       <Inner>
         {PROJECT_SECTIONS.map((section, sectionIndex) => (
-          <TopicContainer key={section.key}>
-            <Label>{section.name}</Label>
+          <TopicContainer key={section.name}>
+            <Label>{t(`projects.${section.name}`)}</Label>
 
             <ScrollArea>
               {canScroll[sectionIndex] && (
@@ -275,16 +328,17 @@ export default function Projects() {
                 {section.projects.map((project, idx) => (
                   <ProjectCard
                     onClick={() => scrollOrNavigate(project.url)}
-                    key={`${section.key}-${idx}`}
+                    key={`${section.name}-${idx}`}
                   >
-                    <Thumbnail
-                      src={project.thumbnailImage}
-                      alt={project.label}
-                    />
+                    <Thumbnail src={project.thumbnailImage} alt={project.key} />
                     <Overlay>
                       <Description>
-                        <ProjectName>{project.label}</ProjectName>
-                        <ProjectText>{project.description}</ProjectText>
+                        <ProjectName>
+                          {t(`projects.${project.key}.label`)}
+                        </ProjectName>
+                        <ProjectText>
+                          {t(`projects.${project.key}.description`)}
+                        </ProjectText>
                       </Description>
                     </Overlay>
                   </ProjectCard>
@@ -295,14 +349,16 @@ export default function Projects() {
         ))}
 
         <TopicContainer>
-          <Label>Courses</Label>
+          <Label>{t("projects.courses")}</Label>
           <CoursesGrid>
             {COURSES.map((c, i) => (
               <CourseCard key={i} target="_blank" href={c.url}>
                 <CourseThumbnail src={c.image} alt={c.name} />
                 <CourseBody>
                   <CourseName>{c.name}</CourseName>
-                  <CourseMeta>{c.hours} год.</CourseMeta>
+                  <CourseMeta>
+                    {c.hours} {t("projects.hours")}
+                  </CourseMeta>
                 </CourseBody>
               </CourseCard>
             ))}

@@ -32,6 +32,10 @@ const StyledDiv = styled.div`
   &:hover ${StyledText} {
     color: var(--grey-color);
   }
+
+  @media screen and (max-width: 850px) {
+    display: none;
+  }
 `;
 
 const SkewedDivFirst = styled.div<{ $theme: "light" | "dark" }>`
