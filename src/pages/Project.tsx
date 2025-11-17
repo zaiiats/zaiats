@@ -19,6 +19,8 @@ export interface Project {
   warningText?: string;
 }
 
+type ProjectKey = keyof typeof projects;
+
 const StyledSection = styled.section`
   padding: 3rem 0rem 3rem;
   display: flex;
@@ -123,8 +125,10 @@ const Description = styled.div`
   flex-direction: column;
   gap: 1rem;
   font-size: 1.1rem;
-  line-height: 120%;
+  line-height: 150%;
   text-indent: 2rem;
+
+  margin: 4rem auto;
 
   h3 {
     font-size: 2rem;
@@ -265,7 +269,9 @@ function Project() {
   const { scrollOrNavigate } = useScrollOrNavigate();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const project = projectName ? projects[projectName] : undefined;
+  const project = (
+    projectName ? projects[projectName as ProjectKey] : undefined
+  ) as Project;
 
   const openImage = (index: number) => {
     setActiveIndex(index);
@@ -280,7 +286,7 @@ function Project() {
     setActiveIndex((prev) =>
       prev === null
         ? null
-        : (prev - 1 + project.images.length) % project?.images.length
+        : (prev - 1 + project?.images.length) % project?.images.length
     );
   };
 

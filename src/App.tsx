@@ -13,7 +13,7 @@ const StyledApp = styled.div`
   font-family: 'Montserrat';
 `;
 
-function App() {
+function App() {  
   return (
     <StyledApp>
       <ThemeProvider>

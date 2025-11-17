@@ -1,7 +1,7 @@
-import { useEffect, type ReactNode } from "react";
+import { useLayoutEffect, type ReactNode } from "react";
 import styled from "styled-components";
 import Nav from "../navigation/Nav";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { smoothScrollTo } from "../../scripts/navigation";
 import ThemeSwitcher from "../standalone/ThemeSwitcher";
 import LangSwitcher from "../standalone/LangSwitcher";
@@ -32,18 +32,35 @@ const Div = styled.div`
 
 function MainContent({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const scrollTo = location.state?.scrollTo;
+  useLayoutEffect(() => {
+    const mainContainer = document.getElementById("mainContainer");
+    if (!mainContainer) return;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const scrollTo = (location.state as any)?.scrollTo as string | undefined;
 
     if (scrollTo) {
-      // очистити state ТІЛЬКИ якщо він був
-      navigate(location.pathname, { replace: true, state: null });
+      requestAnimationFrame(() => {
+        smoothScrollTo(scrollTo, scrollTo === "main");
+      });
 
-      smoothScrollTo(scrollTo, scrollTo === "main", false);
+      const historyState = window.history.state || {};
+      window.history.replaceState(
+        {
+          ...historyState,
+          usr: {
+            ...historyState.usr,
+            scrollTo: undefined,
+          },
+        },
+        ""
+      );
+    } else {
+      // якщо це просто перехід на іншу сторінку — ресет скролу
+      mainContainer.scrollTo({ top: 0 });
     }
-  }, [location.key]);
+  }, [location.pathname, location.state]);
 
   return (
     <StyledDiv>

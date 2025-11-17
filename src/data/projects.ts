@@ -16,10 +16,10 @@ export const projects = {
     url: "https://profix.netlify.app/",
     thumbnail: "/images/projects/profix.png",
     images: [
-      "/images/projects/profix-account.png",
-      "/images/projects/profix-asortment.png",
-      "/images/projects/profix-footer.png",
       "/images/projects/profix.png",
+      "/images/projects/profix-footer.png",
+      "/images/projects/profix-asortment.png",
+      "/images/projects/profix-account.png",
     ],
     durationMonths: 6,
     isSolo: true,

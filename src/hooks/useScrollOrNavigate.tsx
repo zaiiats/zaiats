@@ -5,13 +5,17 @@ export const useScrollOrNavigate = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const scrollOrNavigate = (targetPath: string, elementId: string) => {
-    if (location.pathname === targetPath) {
-      setTimeout(() => {
-        smoothScrollTo(elementId, elementId === "home");
-      }, 0);
+  const scrollOrNavigate = (targetPath: string, elementId?: string) => {
+    if (elementId) {
+      if (location.pathname === targetPath) {
+        requestAnimationFrame(() => {
+          smoothScrollTo(elementId, elementId === "home");
+        });
+      } else {
+        navigate(targetPath, { state: { scrollTo: elementId } });
+      }
     } else {
-      navigate(targetPath, { state: { scrollTo: elementId } });
+      navigate(targetPath);
     }
   };
 

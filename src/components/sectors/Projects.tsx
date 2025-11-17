@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { COURSES } from "../../data/courses";
 import { PROJECT_SECTIONS } from "../../data/projectSec";
+import { useScrollOrNavigate } from "../../hooks/useScrollOrNavigate";
 
 const StyledWrapper = styled.div`
   padding: 5rem 2rem 3rem;
@@ -216,7 +216,7 @@ const CourseMeta = styled.p`
 `;
 
 export default function Projects() {
-  const navigate = useNavigate();
+  const { scrollOrNavigate } = useScrollOrNavigate();
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [canScroll, setCanScroll] = useState<boolean[]>([]);
 
@@ -273,7 +273,10 @@ export default function Projects() {
                 }}
               >
                 {section.projects.map((project, idx) => (
-                  <ProjectCard onClick={() => navigate(project.url)} key={`${section.key}-${idx}`}>
+                  <ProjectCard
+                    onClick={() => scrollOrNavigate(project.url)}
+                    key={`${section.key}-${idx}`}
+                  >
                     <Thumbnail
                       src={project.thumbnailImage}
                       alt={project.label}
