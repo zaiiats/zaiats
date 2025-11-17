@@ -69,7 +69,7 @@ const BackSvg = styled.span`
     width: 2rem;
 
     path {
-      fill: white;
+      fill: var(--main-color);
     }
   }
 
@@ -198,8 +198,8 @@ const Skills = styled.div`
 const Item = styled.div`
   padding: 0.5rem 1rem;
   border-radius: 999px;
-  border: 1px solid #ffffff33;
-  background-color: #000000;
+  border: 1px solid var(--grey-color-light);
+  background-color: var(--reverse-color);
   font-size: 0.95rem;
   opacity: 0.9;
   display: flex;
@@ -235,14 +235,14 @@ const Image = styled.img`
 
   &:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 25px #000000aa;
+    box-shadow: 0 0 25px var(--image-overlay);
   }
 `;
 
 const LightboxOverlay = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--image-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -253,7 +253,7 @@ const LightboxContent = styled.div`
   position: relative;
   width: calc(100vw - 12rem);
   height: 60vh;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -280,8 +280,7 @@ const ArrowButton = styled.button`
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  background: rgba(15, 23, 42, 0.8);
-  color: white;
+  background: var(--main-color);
   width: 3rem;
   height: 3rem;
   border-radius: 999px;
@@ -298,7 +297,7 @@ const ArrowButton = styled.button`
 
   svg {
     path {
-      fill: white;
+      fill: var(--reverse-color);
     }
   }
 
@@ -330,8 +329,8 @@ const CloseButton = styled.button`
   top: -3.5rem;
   right: 0;
   border: none;
-  background: rgba(15, 23, 42, 0.8);
-  color: white;
+  background: var(--main-color);
+  color: var(--reverse-color);
   border-radius: 999px;
   cursor: pointer;
   font-size: 1.5rem;

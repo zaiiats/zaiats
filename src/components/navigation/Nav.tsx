@@ -23,7 +23,7 @@ const StyledNav = styled.nav<{ $scrolled: boolean }>`
     $scrolled &&
     `
       backdrop-filter: blur(10px);
-      background-color: rgba(0,0,0,0.3);
+      background-color: var(--nav-bg-color);
     `}
 `;
 

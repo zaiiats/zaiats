@@ -47,11 +47,10 @@ const ArrowButton = styled.button`
   position: absolute;
   top: 0.5rem;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.6);
+  border: 1px solid var(--grey-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #18191a;
   cursor: pointer;
   backdrop-filter: blur(6px);
   transition: all 0.2s ease-in-out;
@@ -59,6 +58,7 @@ const ArrowButton = styled.button`
   pointer-events: none;
   z-index: 2;
   padding: 0.5rem;
+  background-color: var(--main-color);
 
   ${ScrollArea}:hover & {
     opacity: 1;
@@ -70,7 +70,7 @@ const ArrowButton = styled.button`
     height: 1rem;
 
     path {
-      fill: #000;
+      fill: var(--reverse-color);
     }
   }
 
@@ -89,7 +89,7 @@ const ArrowButton = styled.button`
     background: var(--accent-color);
 
     svg path {
-      fill: #ffffff;
+      fill: white;
     }
   }
 `;
@@ -128,7 +128,7 @@ const ProjectsContainer = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--grey-color-inv);
     border-radius: 999px;
   }
 
@@ -142,7 +142,6 @@ const ProjectCard = styled.div`
   height: 15rem;
   border-radius: 8px;
   overflow: hidden;
-  background-color: #111827;
   cursor: pointer;
   flex-shrink: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -179,7 +178,7 @@ const Thumbnail = styled.img`
 const Overlay = styled.div.attrs(() => ({ "data-overlay": "true" } as any))`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+  background: var(--project-card-overlay);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -193,7 +192,7 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  color: #f9fafb;
+  color: var(--main-color);
 `;
 
 const ProjectName = styled.h2`
@@ -222,14 +221,14 @@ const CoursesGrid = styled.div`
 
   @media screen and (max-width: 700px) {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap:0.75rem;
+    gap: 0.75rem;
   }
 `;
 
 const CourseCard = styled.a`
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border: 1px solid var(--grey-color-light);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -237,7 +236,7 @@ const CourseCard = styled.a`
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
+    box-shadow: 0 14px 30px var(--course-card-shadow);
     border-color: var(--accent-color);
   }
 `;
@@ -258,13 +257,13 @@ const CourseBody = styled.div`
 const CourseName = styled.h3`
   font-size: 0.95rem;
   font-weight: 600;
-  color: #e5e7eb;
+  color: var(--main-color);
 `;
 
 const CourseMeta = styled.p`
   font-size: 0.75rem;
   opacity: 0.8;
-  color: #9ca3af;
+  color: var(--grey-color);
 `;
 
 export default function Projects() {

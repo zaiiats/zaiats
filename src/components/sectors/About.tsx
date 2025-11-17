@@ -32,8 +32,7 @@ const Stat = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 0.45rem;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--grey-color-light);
   border-radius: 8px;
   width: 100%;
   text-align: center;
@@ -73,7 +72,7 @@ const Description = styled.div`
   padding: 2rem;
   backdrop-filter: blur(6px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--grey-color-light);
   text-indent: 2rem;
   gap: 0.5rem;
 
