@@ -65,8 +65,6 @@ function Nav() {
     const onScroll = () => {
       setScrolled(container.scrollTop > 0);
     };
-
-    // одразу провіряємо стан при маунті
     onScroll();
 
     container.addEventListener("scroll", onScroll);

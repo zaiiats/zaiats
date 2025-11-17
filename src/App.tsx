@@ -31,7 +31,7 @@ function App() {
                   </>
                 }
               />
-              <Route path='/:projectName' element={<Project />} />
+              <Route path='projects/:projectName' element={<Project />} />
             </Routes>
           </MainContent>
         </LangProvider>

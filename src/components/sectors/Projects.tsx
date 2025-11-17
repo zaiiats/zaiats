@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { COURSES } from "../../data/courses";
+import { PROJECT_SECTIONS } from "../../data/projectSec";
 
 const StyledWrapper = styled.div`
   padding: 5rem 2rem 3rem;
@@ -143,7 +144,7 @@ const Overlay = styled.div.attrs(() => ({ "data-overlay": "true" } as any))`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0.7rem 1rem;
+  padding: 1rem 1.5rem;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -152,7 +153,7 @@ const Overlay = styled.div.attrs(() => ({ "data-overlay": "true" } as any))`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
   color: #f9fafb;
 `;
 
@@ -162,30 +163,8 @@ const ProjectName = styled.h2`
 `;
 
 const ProjectText = styled.p`
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   opacity: 0.9;
-`;
-
-const ArrowMore = styled.button`
-  margin-top: 0.65rem;
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.75rem;
-  text-decoration: none;
-  color: #e5e7eb;
-  padding: 0.25rem 0.5rem;
-  border-radius: 999px;
-  background-color: rgba(31, 41, 55, 0.8);
-  backdrop-filter: blur(6px);
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  border: none;
-
-  &:hover {
-    background-color: var(--accent-color);
-    transform: translateX(2px);
-  }
 `;
 
 const CoursesGrid = styled.div`
@@ -260,7 +239,7 @@ export default function Projects() {
     const container = scrollRefs.current[index];
     if (!container) return;
 
-    const amountPx = 15 * 16;
+    const amountPx = 30 * 16;
     container.scrollBy({
       left: direction === "left" ? -amountPx : amountPx,
       behavior: "smooth",
@@ -294,7 +273,7 @@ export default function Projects() {
                 }}
               >
                 {section.projects.map((project, idx) => (
-                  <ProjectCard key={`${section.key}-${idx}`}>
+                  <ProjectCard onClick={() => navigate(project.url)} key={`${section.key}-${idx}`}>
                     <Thumbnail
                       src={project.thumbnailImage}
                       alt={project.label}
@@ -303,9 +282,6 @@ export default function Projects() {
                       <Description>
                         <ProjectName>{project.label}</ProjectName>
                         <ProjectText>{project.description}</ProjectText>
-                        <ArrowMore onClick={() => navigate(project.url)}>
-                          → View project
-                        </ArrowMore>
                       </Description>
                     </Overlay>
                   </ProjectCard>
@@ -346,49 +322,3 @@ const arrowSvg = (
     <path d="M10.995 5.00409H3.40501L6.70501 1.71409C6.89332 1.52579 6.9991 1.27039 6.9991 1.00409C6.9991 0.73779 6.89332 0.482395 6.70501 0.294092C6.51671 0.105788 6.26132 0 5.99501 0C5.72871 0 5.47332 0.105788 5.28501 0.294092L0.285014 5.29409C0.193973 5.3892 0.122608 5.50134 0.0750135 5.62409C-0.0250045 5.86755 -0.0250045 6.14063 0.0750135 6.38409C0.122608 6.50684 0.193973 6.61899 0.285014 6.71409L5.28501 11.7141C5.37798 11.8078 5.48858 11.8822 5.61044 11.933C5.7323 11.9838 5.863 12.0099 5.99501 12.0099C6.12703 12.0099 6.25773 11.9838 6.37959 11.933C6.50145 11.8822 6.61205 11.8078 6.70501 11.7141C6.79874 11.6211 6.87314 11.5105 6.9239 11.3887C6.97467 11.2668 7.00081 11.1361 7.00081 11.0041C7.00081 10.8721 6.97467 10.7414 6.9239 10.6195C6.87314 10.4977 6.79874 10.3871 6.70501 10.2941L3.40501 7.00409H10.995C11.2602 7.00409 11.5146 6.89873 11.7021 6.7112C11.8897 6.52366 11.995 6.26931 11.995 6.00409C11.995 5.73888 11.8897 5.48452 11.7021 5.29699C11.5146 5.10945 11.2602 5.00409 10.995 5.00409Z" />{" "}
   </svg>
 );
-
-const PROJECT_SECTIONS = [
-  {
-    name: "Frontend",
-    key: "frontend",
-    projects: [
-      {
-        thumbnailImage: "images/florafauna.png",
-        label: "Flora & Fauna",
-        description: "Landing page для бренду екологічної косметики.",
-        url: "/projects/florafauna",
-      },
-      {
-        thumbnailImage: "images/per6.png",
-        label: "Personal Portfolio",
-        description: "Мінімалістичний портфоліо сайт з анімаціями.",
-        url: "/projects/portfolio",
-      },
-      {
-        thumbnailImage: "images/profix.png",
-        label: "Profix Tools",
-        description: "Каталог інструментів з фільтрами та пошуком.",
-        url: "/projects/profix",
-      },
-    ],
-  },
-  {
-    name: "Fullstack",
-    key: "fullstack",
-    projects: [
-      {
-        thumbnailImage: "images/profix.png",
-        label: "API для магазину",
-        description:
-          "Node.js + REST API для управління товарами та замовленнями.",
-        url: "/projects/store-api",
-      },
-      {
-        thumbnailImage: "images/florafauna.png",
-        label: "Auth Service",
-        description: "Сервіс авторизації з JWT та refresh токенами.",
-        url: "/projects/auth-service",
-      },
-    ],
-  }
-];

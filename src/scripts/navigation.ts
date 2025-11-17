@@ -1,4 +1,4 @@
-export const smoothScrollTo = (id: string, isWithOffset = false) => {
+export const smoothScrollTo = (id: string, isWithOffset = false, isSmooth = true) => {
   const el = document.getElementById(id);
   const mainContainer = document.getElementById("mainContainer");
 
@@ -9,5 +9,8 @@ export const smoothScrollTo = (id: string, isWithOffset = false) => {
 
   const targetY = el.offsetTop - offset;
 
-  mainContainer.scrollTo({ top: targetY, behavior: "smooth" });
+  mainContainer.scrollTo({
+    top: targetY,
+    ...(isSmooth ? { behavior: "smooth" } : {}),
+  });
 };

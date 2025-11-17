@@ -7,8 +7,6 @@ export const useScrollOrNavigate = () => {
 
   const scrollOrNavigate = (targetPath: string, elementId: string) => {
     if (location.pathname === targetPath) {
-      console.log(targetPath, elementId);
-
       setTimeout(() => {
         smoothScrollTo(elementId, elementId === "home");
       }, 0);

@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import styled from "styled-components";
 import Nav from "../navigation/Nav";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -33,19 +33,17 @@ const Div = styled.div`
 function MainContent({ children }: { children: ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const hasHandledScroll = useRef(false);
 
   useEffect(() => {
     const scrollTo = location.state?.scrollTo;
-    if (scrollTo && !hasHandledScroll.current) {
-      hasHandledScroll.current = true;
 
-      setTimeout(() => {
-        smoothScrollTo(scrollTo, scrollTo === "main");
-        navigate(location.pathname, { replace: true, state: {} });
-      }, 100);
+    if (scrollTo) {
+      // очистити state ТІЛЬКИ якщо він був
+      navigate(location.pathname, { replace: true, state: null });
+
+      smoothScrollTo(scrollTo, scrollTo === "main", false);
     }
-  }, [location, navigate]);
+  }, [location.key]);
 
   return (
     <StyledDiv>
