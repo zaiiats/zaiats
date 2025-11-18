@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { COURSES } from "../../data/courses";
 import { PROJECT_SECTIONS } from "../../data/projectSec";
@@ -270,22 +270,24 @@ export default function Projects() {
   const { scrollOrNavigate } = useScrollOrNavigate();
   const { t } = useTranslation();
   const scrollRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [canScroll, setCanScroll] = useState<boolean[]>([]);
+  const [canScroll, setCanScroll] = useState<boolean[]>(() =>
+    PROJECT_SECTIONS.map(() => false)
+  );
+
+  const checkScrollability = useCallback(() => {
+    setCanScroll(
+      scrollRefs.current.map((el) =>
+        el ? el.scrollWidth > el.clientWidth : false
+      )
+    );
+  }, []);
 
   useEffect(() => {
-    const checkScrollability = () => {
-      setCanScroll(
-        scrollRefs.current.map((el) =>
-          el ? el.scrollWidth > el.clientWidth : false
-        )
-      );
-    };
+    requestAnimationFrame(checkScrollability);
 
-    checkScrollability();
     window.addEventListener("resize", checkScrollability);
-
     return () => window.removeEventListener("resize", checkScrollability);
-  }, []);
+  }, [checkScrollability]);
 
   const handleScroll = (index: number, direction: "left" | "right") => {
     const container = scrollRefs.current[index];
@@ -329,7 +331,11 @@ export default function Projects() {
                     onClick={() => scrollOrNavigate(project.url)}
                     key={`${section.name}-${idx}`}
                   >
-                    <Thumbnail src={project.thumbnailImage} alt={project.key} />
+                    <Thumbnail
+                      src={project.thumbnailImage}
+                      alt={project.key}
+                      onLoad={checkScrollability}
+                    />
                     <Overlay>
                       <Description>
                         <ProjectName>
