@@ -133,7 +133,7 @@ const Skill = styled.span`
   align-items: center;
   font-size: 0.75rem;
   opacity: 0.9;
-  color: var(--reverse-color);
+  color: white;
   transition: var(--transition);
 `;
 
