@@ -42,6 +42,12 @@ const GlobalStyles = createGlobalStyle<{ theme: "light" | "dark" }>`
     font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s, color 0.3s;
   }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
 `;
 
 export default GlobalStyles;
