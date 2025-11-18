@@ -143,7 +143,7 @@ const ProjectCard = styled.div`
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  flex-shrink: 0;
+  flex: 0 0 25rem; /* <-- базова ширина картки */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   &:hover div[data-overlay="true"] {
@@ -152,6 +152,7 @@ const ProjectCard = styled.div`
   }
 
   @media (max-width: 900px) {
+    flex: 0 0 14rem;
     div[data-overlay="true"] {
       opacity: 1;
       transform: translateY(0);
@@ -163,6 +164,7 @@ const ProjectCard = styled.div`
   }
 
   @media screen and (max-width: 550px) {
+    flex: 0 0 11rem;
     height: 7rem;
   }
 `;
@@ -170,6 +172,7 @@ const ProjectCard = styled.div`
 const Thumbnail = styled.img`
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   display: block;
 `;
