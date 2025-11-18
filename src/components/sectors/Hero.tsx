@@ -93,6 +93,8 @@ const ImageColumn = styled.div`
 
 const Image = styled.img`
   height: 100%;
+  display: inline;
+  max-width: none;
 `;
 
 const scrollSkills = keyframes`
