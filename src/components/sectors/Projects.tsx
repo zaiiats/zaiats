@@ -296,9 +296,17 @@ export default function Projects() {
     const container = scrollRefs.current[index];
     if (!container) return;
 
-    const amountPx = 30 * 16;
-    container.scrollBy({
-      left: direction === "left" ? -amountPx : amountPx,
+    const step = container.clientWidth * 0.8
+    const delta = direction === "left" ? -step : step;
+
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const target = Math.min(
+      Math.max(container.scrollLeft + delta, 0),
+      maxScrollLeft
+    );
+
+    container.scrollTo({
+      left: target,
       behavior: "smooth",
     });
   };
