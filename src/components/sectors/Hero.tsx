@@ -143,6 +143,10 @@ function Hero() {
   const { scrollOrNavigate } = useScrollOrNavigate();
   const { t } = useTranslation();
 
+  const skillsToDisplay = Object.values(skills)
+    .flat()
+    .sort(() => (Math.random() - 0.5));
+
   return (
     <StyledSection>
       <ActionContainer>
@@ -171,7 +175,7 @@ function Hero() {
       </ImageContainer>
       <SkillsContainer>
         <SkillsRow>
-          {[...skills, ...skills].map((skill, i) => (
+          {[...skillsToDisplay, ...skillsToDisplay].map((skill, i) => (
             <Skill key={i}>
               {skill} <span>{"•"}</span>
             </Skill>

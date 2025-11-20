@@ -36,6 +36,14 @@ const Stat = styled.div`
   border-radius: 8px;
   width: 100%;
   text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px var(--course-card-shadow);
+    border-color: var(--accent-color);
+  }
 `;
 
 const StatValue = styled.div`

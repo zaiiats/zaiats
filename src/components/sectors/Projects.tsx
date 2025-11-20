@@ -4,9 +4,10 @@ import { COURSES } from "../../data/courses";
 import { PROJECT_SECTIONS } from "../../data/projectSec";
 import { useScrollOrNavigate } from "../../hooks/useScrollOrNavigate";
 import { useTranslation } from "react-i18next";
+import { skills } from "../../data/skills";
 
 const StyledWrapper = styled.div`
-  padding: 5rem 2rem 3rem;
+  padding: 3rem 2rem 3rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -24,6 +25,19 @@ const Inner = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
+`;
+
+const Heading = styled.h2`
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Eurostyle";
+  font-weight: 500;
+  padding-top: 2rem;
+
+  @media screen and (max-width: 680px) {
+    font-size: 2rem;
+    padding-top: 1rem;
+  }
 `;
 
 const TopicContainer = styled.section`
@@ -216,6 +230,57 @@ const ProjectText = styled.p`
   }
 `;
 
+const SkillsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  padding-bottom: 1.5rem;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media screen and (max-width: 680px) {
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 0.5rem;
+  }
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: 430px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`;
+
+const Skill = styled.p`
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--grey-color-light);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px var(--course-card-shadow);
+    border-color: var(--accent-color);
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.85rem;
+  }
+
+  @media screen and (max-width: 430px) {
+    font-size: 0.8rem;
+  }
+`;
+
 const CoursesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -296,7 +361,7 @@ export default function Projects() {
     const container = scrollRefs.current[index];
     if (!container) return;
 
-    const step = container.clientWidth * 0.8
+    const step = container.clientWidth * 0.8;
     const delta = direction === "left" ? -step : step;
 
     const maxScrollLeft = container.scrollWidth - container.clientWidth;
@@ -314,6 +379,7 @@ export default function Projects() {
   return (
     <StyledWrapper>
       <Inner>
+        <Heading>Проекти</Heading>
         {PROJECT_SECTIONS.map((section, sectionIndex) => (
           <TopicContainer key={section.name}>
             <Label>{t(`projects.${section.name}`)}</Label>
@@ -364,8 +430,22 @@ export default function Projects() {
           </TopicContainer>
         ))}
 
+        <Heading>{t("projects.skills")}</Heading>
         <TopicContainer>
-          <Label>{t("projects.courses")}</Label>
+          {Object.entries(skills).map(([k, v], i) => (
+            <>
+              <Label>{t(`projects.${k}`)}</Label>
+              <SkillsContainer>
+                {v.map((s, j) => (
+                  <Skill key={`skill-${j}-${i}`}>{s}</Skill>
+                ))}
+              </SkillsContainer>
+            </>
+          ))}
+        </TopicContainer>
+
+        <Heading>{t("projects.courses")}</Heading>
+        <TopicContainer>
           <CoursesGrid>
             {COURSES.map((c, i) => (
               <CourseCard key={i} target="_blank" href={c.url}>

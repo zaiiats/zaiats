@@ -15,6 +15,11 @@
     "frontend": "Фронтенд",
     "courses": "Курси",
     "hours": "год.",
+    "skills": "Скiли",
+    "backend": "Бекенд",
+    "databases": "Бази даних",
+    "devops": "Девопс",
+    "tools": "Iнструменти",
 
     "profix": {
       "label": "Profix",

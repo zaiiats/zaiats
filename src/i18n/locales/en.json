@@ -15,6 +15,11 @@
     "frontend": "Frontend",
     "courses": "Courses",
     "hours": "hours",
+    "skills": "Skills",
+    "backend": "Backend",
+    "databases": "Databases",
+    "devops": "Devops",
+    "tools": "Tools",
 
     "profix": {
       "label": "Profix",
