@@ -3,7 +3,7 @@ export const skills = {
     "HTML",
     "CSS",
     "Sass / SCSS",
-    "Tailwind",
+    "Tailwind", //
     "Design",
     "Figma",
     "SVG",
@@ -22,21 +22,36 @@ export const skills = {
   backend: [
     "Node.js",
     "Express",
+    "Next.js", //
     "REST API",
     "Auth (JWT, Sessions)",
     "Socket.IO",
     "Zod",
   ],
 
-  databases: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Prisma", "Supabase"],
+  databases: [
+    "MongoDB", //
+    "PostgreSQL", //
+    "MySQL", //
+    "Redis", //
+    "Prisma", //
+    "Supabase",
+  ],
 
   devops: [
-    "Docker",
+    "Docker", //
     "AWS (basics)",
     "CI/CD & Nginx (basics)",
     "Linux / CLI",
     "Netlify + Vercel",
   ],
 
-  tools: ["Jest & Vitest", "Git & GitHub", "Npm", "Vite"],
+  tools: [
+    "Jest & Vitest", //
+    "Git & GitHub",
+    "Npm",
+    "Vite",
+    "Web security", //
+    "Web principles", //
+  ],
 };
