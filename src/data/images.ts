@@ -11,10 +11,10 @@ export const images = [
 
   [
     "images/projects/muka.png",
-    "images/projects/trusty.png",
+    "images/projects/zakarpat.png",
     "images/projects/nature.png",
     "images/projects/per6-contacts.png",
-    "images/projects/nature-down.png",
+    "images/projects/zakarpat-services.png",
     "images/projects/profix-asortment.png",
     "images/projects/btw-bunkerin.png",
   ],
@@ -41,7 +41,7 @@ export const images = [
 
   [
     "images/projects/nature-down.png",
-    "images/projects/profix.png",
+    "images/projects/zakarpat-about.png",
     "images/projects/trusty.png",
     "images/projects/btw-menu.png",
     "images/projects/profix-footer.png",

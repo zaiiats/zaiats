@@ -3,7 +3,7 @@ export const skills = {
     "HTML",
     "CSS",
     "Sass / SCSS",
-    "Tailwind", //
+    "Tailwind",
     "Design",
     "Figma",
     "SVG",
@@ -22,7 +22,7 @@ export const skills = {
   backend: [
     "Node.js",
     "Express",
-    "Next.js", //
+    "Next.js",
     "REST API",
     "Auth (JWT, Sessions)",
     "Socket.IO",

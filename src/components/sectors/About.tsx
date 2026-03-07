@@ -1,20 +1,30 @@
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { projects } from "../../data/projects";
+import { COURSES } from "../../data/courses";
 
-const StyledWrapper = styled.div`
-  //height: calc(100dvh - 2rem);
-  padding: 5rem 3rem 5rem;
+const StyledWrapperContent = styled.div`
+  padding: 5rem 2rem 0rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 550px) {
+    padding: 5rem 1rem 3rem;
+  }
+`;
+
+const Inner = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 1rem;
-  max-width: 1200px;
+  max-width: 80rem;
   margin: 0 auto;
 
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(9, 1fr);
-    padding: 4rem 0.5rem 4rem;
   }
 
   @media (max-width: 500px) {
@@ -37,7 +47,10 @@ const Stat = styled.div`
   width: 100%;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 
   &:hover {
     transform: translateY(-3px);
@@ -102,43 +115,68 @@ const Description = styled.div`
 export default function About() {
   const { t } = useTranslation();
   return (
-    <StyledWrapper>
-      <Stat>
-        <StatValue>11</StatValue>
-        <StatKey>{t("about.stats.courses")}</StatKey>
-      </Stat>
+    <StyledWrapperContent>
+      <Inner>
+        <Stat>
+          <StatValue
+            onClick={() => {
+              window.open("https://www.instagram.com/zaiiats/");
+            }}
+          >
+            @zaiiats
+          </StatValue>
+          <StatKey>{t("about.stats.instagram")}</StatKey>
+        </Stat>
 
-      <Stat>
-        <StatValue>7</StatValue>
-        <StatKey>{t("about.stats.projects")}</StatKey>
-      </Stat>
+        <Stat>
+          <StatValue
+            onClick={() => {
+              window.open("https://t.me/zaiiats/");
+            }}
+          >
+            @zaiiats
+          </StatValue>
+          <StatKey>{t("about.stats.telegram")}</StatKey>
+        </Stat>
 
-      <Stat>
-        <StatValue>2+</StatValue>
-        <StatKey>{t("about.stats.years")}</StatKey>
-      </Stat>
+        <Stat>
+          <StatValue
+            onClick={() => {
+              window.location.href = "mailto:zaiatsoleksandry@gmail.com";
+            }}
+            style={{ fontSize: "1rem" }}
+          >
+            zaiatsoleksandry@gmail.com
+          </StatValue>
+          <StatKey>{t("about.stats.email")}</StatKey>
+        </Stat>
 
-      <Description>
-        <p>{t("about.text.paragraph1")}</p>
-        <p>{t("about.text.paragraph2")}</p>
-      </Description>
+        <Description>
+          <p>{t("about.text.paragraph1")}</p>
+          <p>{t("about.text.paragraph2")}</p>
+        </Description>
 
-      <Stat>
-        <StatValue>@zaiiats</StatValue>
-        <StatKey>{t("about.stats.instagram")}</StatKey>
-      </Stat>
+        <Stat>
+          <StatValue>{Object.values(projects).length}</StatValue>
+          <StatKey>{t("about.stats.projects")}</StatKey>
+        </Stat>
 
-      <Stat>
-        <StatValue>@zaiiats</StatValue>
-        <StatKey>{t("about.stats.telegram")}</StatKey>
-      </Stat>
+        <Stat>
+          <StatValue>
+            {Math.floor(
+              (new Date().getTime() - new Date("2024-01-01").getTime()) /
+                (1000 * 60 * 60 * 24 * 365.25),
+            )}
+            +
+          </StatValue>
+          <StatKey>{t("about.stats.years")}</StatKey>
+        </Stat>
 
-      <Stat>
-        <StatValue style={{ fontSize: "1rem" }}>
-          zaiatsoleksandry@gmail.com
-        </StatValue>
-        <StatKey>{t("about.stats.email")}</StatKey>
-      </Stat>
-    </StyledWrapper>
+        <Stat>
+          <StatValue>{Object.values(COURSES).length}</StatValue>
+          <StatKey>{t("about.stats.courses")}</StatKey>
+        </Stat>
+      </Inner>
+    </StyledWrapperContent>
   );
 }

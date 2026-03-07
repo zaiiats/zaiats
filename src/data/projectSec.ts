@@ -33,6 +33,11 @@ export const PROJECT_SECTIONS = [
     name: "fullstack",
     projects: [
       {
+        key: "zakarpat-consult",
+        thumbnailImage: "images/projects/zakarpat.png",
+        url: "/projects/zakarpat-consult",
+      },
+      {
         key: "btw",
         thumbnailImage: "images/projects/btw-game.png",
         url: "/projects/btw",

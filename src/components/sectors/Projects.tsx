@@ -6,7 +6,7 @@ import { useScrollOrNavigate } from "../../hooks/useScrollOrNavigate";
 import { useTranslation } from "react-i18next";
 import { skills } from "../../data/skills";
 
-const StyledWrapper = styled.div`
+const StyledWrapperContent = styled.div`
   padding: 3rem 2rem 3rem;
   width: 100%;
   display: flex;
@@ -377,7 +377,7 @@ export default function Projects() {
   };
 
   return (
-    <StyledWrapper>
+    <StyledWrapperContent>
       <Inner>
         <Heading>Проекти</Heading>
         {PROJECT_SECTIONS.map((section, sectionIndex) => (
@@ -461,7 +461,7 @@ export default function Projects() {
           </CoursesGrid>
         </TopicContainer>
       </Inner>
-    </StyledWrapper>
+    </StyledWrapperContent>
   );
 }
 

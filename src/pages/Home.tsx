@@ -9,11 +9,11 @@ function Home() {
       <FullScreen id='home'>
         <Hero />
       </FullScreen>
-      <FullScreen id='projects'>
-        <Projects />
-      </FullScreen>
       <FullScreen id='about'>
         <About />
+      </FullScreen>
+      <FullScreen id='projects'>
+        <Projects />
       </FullScreen>
     </div>
   );

@@ -181,4 +181,28 @@ export const projects = {
     isDesigned: true,
     year: 2025,
   },
+  "zakarpat-consult": {
+    skills: [
+      "Next.js",
+      "TypeScript",
+      "Figma",
+      
+      "Vite",
+      "Vercel",
+      "Git & Github",
+      "SEO",
+    ],
+    url: "https://www.zakarpat-consult.com/",
+    thumbnail: "/images/projects/zakarpat.png",
+    images: [
+      "/images/projects/zakarpat.png",
+      "/images/projects/zakarpat-services.png",
+      "/images/projects/zakarpat-about.png",
+      "/images/projects/zakarpat-contacts.png",
+    ],
+    durationMonths: 1,
+    isSolo: true,
+    isDesigned: true,
+    year: 2026,
+  },
 };
