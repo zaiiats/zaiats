@@ -35,6 +35,7 @@ export const images = [
     "images/projects/nulp.png",
     "images/projects/btw-game.png",
     "images/projects/trusty-contract.png",
+    "images/projects/zakarpat-contacts.png",
     "images/projects/per6.png",
     "images/projects/btw-news.png",
   ],
