@@ -1,0 +1,17 @@
+<svg
+  width="50"
+  height="50"
+  viewBox="0 0 50 50"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="
+      M 0 0
+      H 50
+      V 50
+      A 50 50 0 0 0 0 0
+      Z
+    "
+    fill="black"
+  />
+</svg>

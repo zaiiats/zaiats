@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+  --font-eurostyle: var(--font-eurostyle), sans-serif;
+  --font-montserrat: var(--font-montserrat), sans-serif;
+}
+
+html,
+body {
+  cursor:
+    url("/cursors/cursor.png") 3 0,
+    auto;
+}
+
+a,
+button,
+[role="button"],
+.cursor-pointer,
+[class*="cursor-pointer"],
+a *,
+button * {
+  cursor:
+    url("/cursors/pointer.png") 7 0,
+    pointer !important;
+}
+
+:root {
+  --main-color: black;
+  --reverse-color: white;
+  --bg-color: #f0f0f0ff;
+  --bg2-color: rgba(255, 255, 255, 0.7);
+
+  --grey-color: #444;
+  --grey-color-light: #ccc;
+  --grey-color-inv: rgba(0, 0, 0, 0.4);
+
+  --frame-color: rgb(0, 0, 0);
+  --project-card-overlay: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.6)
+  );
+  --course-card-shadow: rgba(0, 0, 0, 0.1);
+
+  --accent-color: #58289f;
+  --accent-color-high: #391a68;
+  --text-color: #000000;
+
+  --nav-bg-color: rgba(255, 255, 255, 0.3);
+  --image-overlay: rgba(0, 0, 0, 0.6);
+
+  --transition: all 0.15s ease-in-out;
+  --blur: blur(20px);
+}
+
+.dark {
+  --main-color: white;
+  --reverse-color: black;
+  --bg-color: #111;
+  --bg2-color: rgba(0, 0, 0, 0.8);
+
+  --grey-color: #aaa;
+  --grey-color-light: #444;
+  --grey-color-inv: rgba(255, 255, 255, 0.2);
+
+  --frame-color: black;
+  --project-card-overlay: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.4)
+  );
+  --course-card-shadow: rgba(0, 0, 0, 0.9);
+
+  --text-color: #f0f0f0;
+
+  --nav-bg-color: rgba(0, 0, 0, 0.3);
+  --image-overlay: rgba(0, 0, 0, 0.9);
+}
+
+@utility text-glow-sm {
+  text-shadow: 
+    0 0 2px currentColor,
+    0 0 12px color-mix(in srgb, currentColor 40%, transparent)
+}
+
+@utility text-glow-accent {
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#mainContainer::-webkit-scrollbar {
+  display: none !important;
+}
+
+@keyframes move-left {
+  0% {
+    transform: rotate(2deg) translateX(-400px);
+  }
+  100% {
+    transform: rotate(2deg) translateX(400px);
+  }
+}
+
+@keyframes move-right {
+  0% {
+    transform: rotate(2deg) translateX(400px);
+  }
+  100% {
+    transform: rotate(2deg) translateX(-400px);
+  }
+}
+
+@keyframes scrollSkills {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    transform: translate(-50%, -20px);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+}
