@@ -33,6 +33,16 @@ export const PROJECT_SECTIONS = [
     name: "fullstack",
     projects: [
       {
+        key: "vulnerabilityHunter",
+        thumbnailImage: "images/projects/vuln-hunt.png",
+        url: "/projects/vulnerabilityHunter",
+      },
+      {
+        key: "filmania",
+        thumbnailImage: "images/projects/filmania-movie.png",
+        url: "/projects/filmania",
+      },
+      {
         key: "zakarpat-consult",
         thumbnailImage: "images/projects/zakarpat.png",
         url: "/projects/zakarpat-consult",

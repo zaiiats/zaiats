@@ -66,9 +66,21 @@ export const COURSES = [
     url: "https://ua.udemy.com/certificate/UC-bfd6a0e6-298e-415e-9101-b1d89fa70c6b/",
   },
   {
+    name: "Modern HTML5, CSS3 and web design",
+    image: "/courses/html-design.png",
+    hours: 37.5,
+    url: "https://ua.udemy.com/certificate/UC-78075804-c21b-4551-84cb-64f7356d0311/",
+  },
+  {
     name: "Network addressing and Basic Troubleshooting",
     image: "/courses/network-addressing-and-basic-troubleshooting.png",
     hours: 14,
     url: "https://www.credly.com/badges/b876b756-db46-40c6-8495-8ba0f95f86e9",
+  },
+  {
+    name: "React Testing Library",
+    image: "/courses/react-testing-library.png",
+    hours: 7.5,
+    url: "https://ua.udemy.com/certificate/UC-e959a083-f3fc-4218-8c4c-a1e7cead574a/",
   },
 ];
