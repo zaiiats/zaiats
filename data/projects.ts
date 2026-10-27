@@ -70,7 +70,7 @@ export const projects = {
       "Netlify",
       "Domain managment",
     ],
-    url: "https://per6.org/",
+    url: "",
     thumbnail: "/images/projects/per6.png",
     images: ["/images/projects/per6.png", "/images/projects/per6-contacts.png"],
     durationMonths: 0.5,
@@ -86,7 +86,7 @@ export const projects = {
     durationMonths: 0.5,
     isSolo: true,
     isDesigned: true,
-    year: 2025,
+    year: 2023,
   },
   btw: {
     skills: [
@@ -120,7 +120,7 @@ export const projects = {
       "Https",
       "Team Leader",
     ],
-    url: "https://per6.org/btw",
+    url: "",
     thumbnail: "/images/projects/btw-game.png",
     images: [
       "/images/projects/btw-menu.png",
@@ -252,10 +252,9 @@ export const projects = {
     ],
     thumbnail: "/images/projects/filmania-movie.png",
     images: [
-      "/images/projects/filmania-movie.png",
       "/images/projects/filmania-main.png",
-      "/images/projects/filmania.png",
       "/images/projects/filmania-form.png",
+      "/images/projects/filmania.png",
       "/images/projects/filmania-account.png",
     ],
     durationMonths: 2,

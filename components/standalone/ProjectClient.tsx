@@ -23,7 +23,7 @@ export interface Project {
 type ProjectKey = keyof typeof projects;
 
 interface ProjectClientProps {
-  dict: any; // Типізуй словник під себе
+  dict: any; 
   projectName: string;
 }
 

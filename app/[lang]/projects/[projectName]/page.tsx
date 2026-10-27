@@ -10,7 +10,9 @@ interface PageProps {
 
 export default async function ProjectPage({ params }: PageProps) {
   const { projectName } = await params;
-  
+
+  console.log(projectName);
+
   const dict = await getDictionary();
 
   return <ProjectClient dict={dict} projectName={projectName} />;
